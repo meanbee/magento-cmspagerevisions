@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Meanbee_CmsPageRevisions>
+            <version>1.0.0</version>
+        </Meanbee_CmsPageRevisions>
+    </modules>
+    
+    <global>
+        <helpers>
+            <meanbee_cmspagerevisions>
+                <class>Meanbee_CmsPageRevisions_Helper</class>
+            </meanbee_cmspagerevisions>
+        </helpers>
+        <blocks>
+            <class>Meanbee_CmsPageRevisions_Block</class>
+        </blocks>
+        <models>
+            <meanbee_cmspagerevisions>
+                <class>Meanbee_CmsPageRevisions_Model</class>
+                <resourceModel>meanbee_cmspagerevisions_mysql4</resourceModel>
+            </meanbee_cmspagerevisions>
+
+            <meanbee_cmspagerevisions_mysql4>
+                <class>Meanbee_CmsPageRevisions_Model_Mysql4</class>
+                <entities>
+                    <cms_page_revisions>
+                        <table>cms_page_revisions</table>
+                    </cms_page_revisions>
+                </entities>
+            </meanbee_cmspagerevisions_mysql4>
+        </models>
+        <resources>
+            <meanbee_cmspagerevisions_setup>
+                <setup>
+                    <module>Meanbee_CmsPageRevisions</module>
+                </setup>
+            </meanbee_cmspagerevisions_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Meanbee_CmsPageRevisions before="Mage_Adminhtml">Meanbee_CmsPageRevisions_Adminhtml</Meanbee_CmsPageRevisions>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <meanbee_cmspagerevisions>
+                    <file>meanbee/cmspagerevisons/cms.xml</file>
+                </meanbee_cmspagerevisions>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

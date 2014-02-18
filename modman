@@ -1,0 +1,4 @@
+app/code/community/Meanbee/CmsPageRevisions app/code/community/Meanbee/CmsPageRevisions
+app/design/adminhtml/default/default/template/meanbee/cmspagerevisions app/design/adminhtml/default/default/template/meanbee/cmspagerevisions
+app/design/adminhtml/default/default/layout/meanbee/cmspagerevisions app/design/adminhtml/default/default/layout/meanbee/cmspagerevisions
+Meanbee_CmsPageRevisions.xml app/etc/modules/Meanbee_CmsPageRevisions.xml
