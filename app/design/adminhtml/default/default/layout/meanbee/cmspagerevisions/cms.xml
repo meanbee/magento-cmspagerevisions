@@ -2,8 +2,18 @@
 <layout version="0.0.1">
     <adminhtml_cms_page_edit>
         <reference name="cms_page_edit_tabs">
-            <block type="module/cms_page_edit_tab_revisions" name="cms_page_edit_tab_revisions" after="cms_page_edit_tab_meta"/>                
-            <action method="addTab"><name>revisions_section</name><block>cms_page_edit_tab_revisions</block></action>                                
+            <block type="meanbee_cmspagerevisions/adminhtml_cms_page_edit_tab_revisions" name="cms_page_edit_tab_revisions"
+                   after="cms_page_edit_tab_meta"/>
+            <action method="addTab">
+                <name>revisions_section</name>
+                <block>cms_page_edit_tab_revisions</block>
+            </action>
         </reference>
     </adminhtml_cms_page_edit>
+
+    <adminhtml_cms_page_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="meanbee_cmspagerevisions/adminhtml_cms_page_edit_tab_revisions" name="cms_page_edit_tab_revisions" />
+        </block>
+    </adminhtml_cms_page_grid>
 </layout>

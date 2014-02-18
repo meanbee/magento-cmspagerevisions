@@ -12,9 +12,13 @@
                 <class>Meanbee_CmsPageRevisions_Helper</class>
             </meanbee_cmspagerevisions>
         </helpers>
+
         <blocks>
-            <class>Meanbee_CmsPageRevisions_Block</class>
+            <meanbee_cmspagerevisions>
+                <class>Meanbee_CmsPageRevisions_Block</class>
+            </meanbee_cmspagerevisions>
         </blocks>
+
         <models>
             <meanbee_cmspagerevisions>
                 <class>Meanbee_CmsPageRevisions_Model</class>
@@ -30,6 +34,7 @@
                 </entities>
             </meanbee_cmspagerevisions_mysql4>
         </models>
+
         <resources>
             <meanbee_cmspagerevisions_setup>
                 <setup>
@@ -37,6 +42,18 @@
                 </setup>
             </meanbee_cmspagerevisions_setup>
         </resources>
+
+        <events>
+            <cms_page_save_before>
+                <observers>
+                    <meanbee_cmspageresvisions_model_observer>
+                        <type>singleton</type>
+                        <class>Meanbee_CmsPageRevisions_Model_Observer</class>
+                        <method>saveRevision</method>
+                    </meanbee_cmspageresvisions_model_observer>
+                </observers>
+            </cms_page_save_before>
+        </events>
     </global>
 
     <admin>
@@ -55,7 +72,7 @@
         <layout>
             <updates>
                 <meanbee_cmspagerevisions>
-                    <file>meanbee/cmspagerevisons/cms.xml</file>
+                    <file>meanbee/cmspagerevisions/cms.xml</file>
                 </meanbee_cmspagerevisions>
             </updates>
         </layout>
