@@ -4,6 +4,9 @@
         <Meanbee_CmsPageRevisions>
             <active>true</active>
             <codePool>community</codePool>
+            <depends>
+                <Mage_Cms />
+            </depends>
         </Meanbee_CmsPageRevisions>
     </modules>
 </config>
