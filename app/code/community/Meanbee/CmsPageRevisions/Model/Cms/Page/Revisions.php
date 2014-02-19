@@ -37,6 +37,7 @@ class Meanbee_CmsPageRevisions_Model_Cms_Page_Revisions extends Mage_Core_Model_
             ->getCollection()
             ->addFieldToFilter('page_id', array('eq' => $this->getPageId()))
             ->setOrder('revision_id', 'desc')
+            ->setPage(1,1)
             ->getFirstItem();
     }
 }
