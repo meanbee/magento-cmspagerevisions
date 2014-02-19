@@ -6,11 +6,13 @@ class Meanbee_CmsPageRevisions_Block_Adminhtml_Cms_Page_Edit_Tab_Grid_Renderer_A
     {
         $actions = array( array(
                 'url'     => $this->getUrl('*/*/restore', array('id' => $row->getRevisionId())),
-                'caption' => Mage::helper('newsletter')->__('Restore this Version')
+                'caption' => Mage::helper('newsletter')->__('Restore this Version'),
+                'confirm'  => Mage::helper('meanbee_cmspagerevisions')->__('Are you sure?')
             ),
             array(
                 'url'     => $this->getUrl('*/*/delete', array('id'=>$row->getRevisionId())),
-                'caption' => Mage::helper('newsletter')->__('Delete this Version')
+                'caption' => Mage::helper('newsletter')->__('Delete this Version'),
+                'confirm'  => Mage::helper('meanbee_cmspagerevisions')->__('Are you sure?')
             ),
             array(
                 'url'     => $this->getUrl('*/*/review', array('id' => $row->getRevisionId())),
