@@ -32,11 +32,6 @@ class Meanbee_CmsPageRevisions_Block_Adminhtml_Cms_Page_Edit_Tab_Revisions exten
             'width'     => '80',
             'index'     => 'creation_time'
         ));
-        $this->addColumn('revision_title', array(
-            'header'    => Mage::helper('meanbee_cmspagerevisions')->__('Title'),
-            'width'     => '1',
-            'index'     => 'title'
-        ));
         $this->addColumn('revision_restore', array(
             'header' => Mage::helper('meanbee_cmspagerevisions')->__('Actions'),
             'align' => 'center',
@@ -72,14 +67,4 @@ class Meanbee_CmsPageRevisions_Block_Adminhtml_Cms_Page_Edit_Tab_Revisions exten
     {
         return false;
     }
-//    public function __construct() {
-//        parent::__construct();
-//        $this->setUseAjax(true);
-//        $this->setId('cms_page_revision');
-//        $this->setDefaultSort('revision_id');
-//        $this->_blockGroup = 'meanbee_cmspagerevisions';
-//        $this->_controller = 'cms_page_edit_tab_revisions';
-//        $this->_headerText = $this->__('CMS Page Revisions');
-//
-//    }
 }

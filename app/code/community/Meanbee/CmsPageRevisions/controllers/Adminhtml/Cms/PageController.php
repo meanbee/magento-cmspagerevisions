@@ -7,7 +7,6 @@ class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminht
     public function gridAction() {
         $this->_initAction();
         $this->loadLayout();
-        $block = $this->getLayout()->getBlock('cms_page_edit_tab_revisions');
         $this->renderLayout();
     }
 
@@ -32,7 +31,15 @@ class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminht
         } catch(Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         }
-        $this->getResponse()->setRedirect($this->getUrl('*/*/', array('store' => $this->getRequest()->getParam('store'))));
+        $this->_redirectReferer();
+    }
+
+    public function reviewAction() {
+        $revision = $this->_getRevision();
+        $this->loadLayout();
+        $block = $this->getLayout()->getBlock('meanbee.cmspagerevisions.review');
+        $block->setRevision($revision);
+        $this->renderLayout();
     }
 
     protected function _getRevision() {

@@ -16,4 +16,20 @@
             <block type="meanbee_cmspagerevisions/adminhtml_cms_page_edit_tab_revisions" name="cms_page_edit_tab_revisions" />
         </block>
     </adminhtml_cms_page_grid>
+
+    <adminhtml_cms_page_review>
+        <update handle="default"/>
+        <remove name="header"/>
+        <remove name="menu"/>
+        <reference name="root">
+            <action method="setTemplate"><template>popup.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="meanbee_cmspagerevisions/adminhtml_cms_page_review" name="meanbee.cmspagerevisions.review">
+                <action method="setTemplate">
+                    <template>meanbee/cmspagerevisions/review.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_cms_page_review>
 </layout>

@@ -6,6 +6,9 @@ class Meanbee_CmsPageRevisions_Model_Cms_Page_Revisions extends Mage_Core_Model_
     }
 
     public function restore() {
+        if($this->_getLastRevision()->getId() == $this->getId()) {
+            throw new Exception("You cannot restore the current version!", 1);
+        }
         $this->setRestoredFromId($this->_getLastRevision()->getId())->save();
         $cmsPage = Mage::getModel('cms/page')->load($this->getPageId());
         $cmsPage->setTitle($this->getTitle())

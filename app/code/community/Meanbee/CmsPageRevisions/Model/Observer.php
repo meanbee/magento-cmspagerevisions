@@ -6,6 +6,7 @@ class Meanbee_CmsPageRevisions_Model_Observer {
 
         /** @var Mage_Cms_Model_Page $cmsPage */
         $cmsPage = $observer->getDataObject();
+
         if (!$cmsPage->dataHasChangedFor('title') &&
             !$cmsPage->dataHasChangedFor('root_template') &&
             !$cmsPage->dataHasChangedFor('meta_keywords') &&
@@ -23,6 +24,7 @@ class Meanbee_CmsPageRevisions_Model_Observer {
         ) {
             return;
         }
+        
         $revision = Mage::getModel('meanbee_cmspagerevisions/cms_page_revisions');
         $revision->setPageId($cmsPage->getId())
             ->setTitle($cmsPage->getTitle())
@@ -42,7 +44,6 @@ class Meanbee_CmsPageRevisions_Model_Observer {
             ->setCustomLayoutUpdateXml($cmsPage->getCustomLayoutUpdateXml())
             ->setCustomThemeFrom($cmsPage->getCustomThemeFrom())
             ->setCustomThemeTo($cmsPage->getCustomThemeTo())
-            ->setRestoredFromId($cmsPage->getRestoredFromId())
             ->save();
     }
 }

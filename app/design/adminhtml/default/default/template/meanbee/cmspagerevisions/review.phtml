@@ -1,0 +1,20 @@
+<?php $_revision = $this->getRevision()->getData(); ?>
+<h2>Previewing Revision #<?php echo $_revision['revision_id']; ?>, from Page #<?php echo $_revision['page_id'];?></h2>
+<table style="max-width:100%">
+<tr>
+    <th>Column</th>
+    <th>Data</th>
+</tr>
+<?php foreach($_revision as $id => $data): ?>
+<tr>
+    <th><?php echo $this->getDisplayName($id); ?></th>
+    <td>
+        <?php if($this->isHtml($data)): ?>
+            <textarea cols="150" rows="30"><?php echo $data; ?></textarea>
+        <?php else: ?>
+            <?php  if(strlen($data)) echo htmlentities($data); else echo "<em>Empty</em>"; ?>
+        <?php endif; ?>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
