@@ -2,7 +2,6 @@
 class Meanbee_CmsPageRevisions_Model_Observer {
 
     public function saveRevision($observer) {
-            Mage::log('Observer!!', null, 'ashsmith.log', true);
         /** @var $observer Mage_Core_Model_Abstract */
 
         /** @var Mage_Cms_Model_Page $cmsPage */
@@ -26,7 +25,6 @@ class Meanbee_CmsPageRevisions_Model_Observer {
         ) {
             return;
         }
-        try {
         $revision = Mage::getModel('meanbee_cmspagerevisions/cms_page_revisions');
         $revision->setPageId($cmsPage->getId())
             ->setTitle($cmsPage->getTitle())
@@ -47,9 +45,6 @@ class Meanbee_CmsPageRevisions_Model_Observer {
             ->setCustomThemeFrom($cmsPage->getCustomThemeFrom())
             ->setCustomThemeTo($cmsPage->getCustomThemeTo())
             ->save();
-        } catch(Exception $e) {
-            Mage::log($e->getMessage(), null, 'ashsmith.log', true);
-        }
     }
 
     private function _hasRevisions($pageId) {
