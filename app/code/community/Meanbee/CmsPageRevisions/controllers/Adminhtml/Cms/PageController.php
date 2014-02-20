@@ -19,7 +19,7 @@ class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminht
         } catch(Exception $e) {
             $this->_getSession()->addError($e->getMessage());
         }
-        $this->getResponse()->setRedirect($this->getUrl('*/*/', array('store' => $this->getRequest()->getParam('store'))));
+        $this->_redirectReferer();
     }
 
     public function restoreAction() {
