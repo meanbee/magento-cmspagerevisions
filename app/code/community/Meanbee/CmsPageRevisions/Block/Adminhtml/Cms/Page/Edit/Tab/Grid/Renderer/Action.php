@@ -10,7 +10,7 @@ class Meanbee_CmsPageRevisions_Block_Adminhtml_Cms_Page_Edit_Tab_Grid_Renderer_A
                 'confirm'  => Mage::helper('meanbee_cmspagerevisions')->__('Are you sure?')
             ),
             array(
-                'url'     => $this->getUrl('*/*/delete', array('id'=>$row->getRevisionId())),
+                'url'     => $this->getUrl('*/*/deleteRevision', array('id'=>$row->getRevisionId())),
                 'caption' => Mage::helper('newsletter')->__('Delete this Version'),
                 'confirm'  => Mage::helper('meanbee_cmspagerevisions')->__('Are you sure?')
             ),

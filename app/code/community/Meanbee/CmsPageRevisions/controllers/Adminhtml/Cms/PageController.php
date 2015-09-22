@@ -10,7 +10,7 @@ class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminht
         $this->renderLayout();
     }
 
-    public function deleteAction() {
+    public function deleteRevisionAction() {
         /** @var Meanbee_CmsPageRevisions_Model_Mysql4_Cms_Page_Revisions $revision */
         $revision = $this->_getRevision();
         try {
