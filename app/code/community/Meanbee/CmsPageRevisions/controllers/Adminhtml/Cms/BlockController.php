@@ -1,8 +1,8 @@
 <?php
 
-require('Mage/Adminhtml/controllers/Cms/PageController.php');
+require('Mage/Adminhtml/controllers/Cms/BlockController.php');
 
-class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminhtml_Cms_PageController {
+class Meanbee_CmsPageRevisions_Adminhtml_Cms_BlockController extends Mage_Adminhtml_Cms_BlockController {
 
     public function gridAction() {
         $this->_initAction();
@@ -10,8 +10,8 @@ class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminht
         $this->renderLayout();
     }
 
-    public function deleteAction() {
-        /** @var Meanbee_CmsPageRevisions_Model_Mysql4_Cms_Page_Revisions $revision */
+    public function deleteRevisionAction() {
+        /** @var Meanbee_CmsPageRevisions_Model_Mysql4_Cms_Block_Revisions $revision */
         $revision = $this->_getRevision();
         try {
             $revision->delete();
@@ -23,7 +23,7 @@ class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminht
     }
 
     public function restoreAction() {
-        /** @var Meanbee_CmsPageRevisions_Model_Mysql4_Cms_Page_Revisions $revision */
+        /** @var Meanbee_CmsPageRevisions_Model_Mysql4_Cms_Block_Revisions $revision */
         $revision = $this->_getRevision();
         try {
             $revision->restore();
@@ -43,6 +43,6 @@ class Meanbee_CmsPageRevisions_Adminhtml_Cms_PageController extends Mage_Adminht
     }
 
     protected function _getRevision() {
-        return Mage::getModel('meanbee_cmspagerevisions/cms_page_revisions')->load($this->getRequest()->getParam('id'));
+        return Mage::getModel('meanbee_cmspagerevisions/cms_block_revisions')->load($this->getRequest()->getParam('id'));
     }
 }
