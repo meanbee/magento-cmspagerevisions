@@ -1,5 +1,10 @@
 <?php $_revision = $this->getRevision()->getData(); ?>
-<h2>Previewing Revision #<?php echo $_revision['revision_id']; ?>, from Page #<?php echo $_revision['page_id'];?></h2>
+<h2>Previewing Revision #<?php echo $_revision['revision_id']; ?>, from
+    <?php if (isset($_revision['page_id'])): ?>
+        Page #<?php echo $_revision['page_id'];?>
+    <?php elseif (isset($_revision['block_id'])): ?>
+        Block #<?php echo $_revision['block_id']; ?>
+    <?php endif; ?></h2>
 <table style="max-width:100%">
 <tr>
     <th>Column</th>
