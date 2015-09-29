@@ -10,8 +10,8 @@ class Meanbee_CmsPageRevisions_Model_Cms_Block_Revisions extends Mage_Core_Model
             throw new Exception(Mage::helper('meanbee_cmspagerevisions')->__('You cannot restore the current version!'), 1);
         }
         $this->setRestoredFromId($this->_getLastRevision()->getId())->save();
-        $cmsPage = Mage::getModel('cms/page')->load($this->getPageId());
-        $cmsPage->setTitle($this->getTitle())
+        $cmsBlock = Mage::getModel('cms/block')->load($this->getBlockId());
+        $cmsBlock->setTitle($this->getTitle())
             ->setIdentifier($this->getIdentifier())
             ->setContent($this->getContent())
             ->setCreationTime(Mage::getSingleton('core/date')->gmtDate())
