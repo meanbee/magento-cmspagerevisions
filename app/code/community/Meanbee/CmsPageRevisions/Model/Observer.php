@@ -77,11 +77,11 @@ class Meanbee_CmsPageRevisions_Model_Observer {
             ->save();
     }
 
-    private function _pageHasRevisions($pageId) {
+    protected function _pageHasRevisions($pageId) {
         return Mage::getModel('meanbee_cmspagerevisions/cms_page_revisions')->getCollection()->addFieldToFilter('page_id', array('eq' => $pageId))->count();
     }
 
-    private function _blockHasRevisions($blockId) {
+    protected function _blockHasRevisions($blockId) {
         return Mage::getModel('meanbee_cmspagerevisions/cms_block_revisions')->getCollection()->addFieldToFilter('block_id', array('eq' => $blockId))->count();
     }
 }
