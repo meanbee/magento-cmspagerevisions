@@ -7,6 +7,10 @@ class Meanbee_CmsPageRevisions_Model_Observer {
         /** @var Mage_Cms_Model_Page $cmsPage */
         $cmsPage = $observer->getDataObject();
 
+        if ($cmsPage->isObjectNew()) {
+            return;
+        }
+
         if (!$cmsPage->dataHasChangedFor('title') &&
             !$cmsPage->dataHasChangedFor('root_template') &&
             !$cmsPage->dataHasChangedFor('meta_keywords') &&
