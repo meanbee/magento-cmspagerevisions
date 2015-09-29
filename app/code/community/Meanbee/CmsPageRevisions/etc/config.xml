@@ -2,10 +2,10 @@
 <config>
     <modules>
         <Meanbee_CmsPageRevisions>
-            <version>1.0.1</version>
+            <version>1.1.0</version>
         </Meanbee_CmsPageRevisions>
     </modules>
-    
+
     <global>
         <helpers>
             <meanbee_cmspagerevisions>
@@ -20,6 +20,12 @@
         </blocks>
 
         <models>
+            <cms>
+                <rewrite>
+                    <block>Meanbee_CmsPageRevisions_Model_Cms_Block</block>
+                </rewrite>
+            </cms>
+
             <meanbee_cmspagerevisions>
                 <class>Meanbee_CmsPageRevisions_Model</class>
                 <resourceModel>meanbee_cmspagerevisions_mysql4</resourceModel>
@@ -31,6 +37,9 @@
                     <cms_page_revisions>
                         <table>cms_page_revisions</table>
                     </cms_page_revisions>
+                    <cms_block_revisions>
+                        <table>cms_block_revisions</table>
+                    </cms_block_revisions>
                 </entities>
             </meanbee_cmspagerevisions_mysql4>
         </models>
@@ -49,10 +58,19 @@
                     <meanbee_cmspageresvisions_model_observer>
                         <type>singleton</type>
                         <class>Meanbee_CmsPageRevisions_Model_Observer</class>
-                        <method>saveRevision</method>
+                        <method>savePageRevision</method>
                     </meanbee_cmspageresvisions_model_observer>
                 </observers>
             </cms_page_save_before>
+            <cms_block_save_before>
+                <observers>
+                    <meanbee_cmspageresvisions_model_observer>
+                        <type>singleton</type>
+                        <class>Meanbee_CmsPageRevisions_Model_Observer</class>
+                        <method>saveBlockRevision</method>
+                    </meanbee_cmspageresvisions_model_observer>
+                </observers>
+            </cms_block_save_before>
         </events>
     </global>
 

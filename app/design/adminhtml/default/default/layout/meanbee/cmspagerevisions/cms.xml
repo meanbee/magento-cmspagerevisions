@@ -32,4 +32,32 @@
             </block>
         </reference>
     </adminhtml_cms_page_review>
+
+    <adminhtml_cms_block_edit>
+        <reference name="content">
+                <block type="meanbee_cmspagerevisions/adminhtml_cms_block_edit_tab_revisions" name="cms_block_edit_tab_revisions"/>
+        </reference>
+    </adminhtml_cms_block_edit>
+
+    <adminhtml_cms_block_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="meanbee_cmspagerevisions/adminhtml_cms_block_edit_tab_revisions" name="cms_block_edit_tab_revisions" />
+        </block>
+    </adminhtml_cms_block_grid>
+
+    <adminhtml_cms_block_review>
+        <update handle="default"/>
+        <remove name="header"/>
+        <remove name="menu"/>
+        <reference name="root">
+            <action method="setTemplate"><template>popup.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="meanbee_cmspagerevisions/adminhtml_cms_block_review" name="meanbee.cmspagerevisions.review">
+                <action method="setTemplate">
+                    <template>meanbee/cmspagerevisions/review.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_cms_block_review>
 </layout>

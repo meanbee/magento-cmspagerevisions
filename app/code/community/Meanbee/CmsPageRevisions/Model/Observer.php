@@ -1,11 +1,15 @@
 <?php
 class Meanbee_CmsPageRevisions_Model_Observer {
 
-    public function saveRevision($observer) {
+    public function savePageRevision($observer) {
         /** @var $observer Mage_Core_Model_Abstract */
 
         /** @var Mage_Cms_Model_Page $cmsPage */
         $cmsPage = $observer->getDataObject();
+
+        if ($cmsPage->isObjectNew()) {
+            return;
+        }
 
         if (!$cmsPage->dataHasChangedFor('title') &&
             !$cmsPage->dataHasChangedFor('root_template') &&
@@ -21,7 +25,7 @@ class Meanbee_CmsPageRevisions_Model_Observer {
             !$cmsPage->dataHasChangedFor('custom_layout_update_xml') &&
             !$cmsPage->dataHasChangedFor('custom_theme_from') &&
             !$cmsPage->dataHasChangedFor('custom_theme_to') &&
-            $this->_hasRevisions($cmsPage->getId())
+            $this->_pageHasRevisions($cmsPage->getId())
         ) {
             return;
         }
@@ -47,7 +51,41 @@ class Meanbee_CmsPageRevisions_Model_Observer {
             ->save();
     }
 
-    private function _hasRevisions($pageId) {
+    public function saveBlockRevision($observer) {
+        /** @var $observer Mage_Core_Model_Abstract */
+
+        /** @var Mage_Cms_Model_Block $cmsBlock */
+        $cmsBlock = $observer->getDataObject();
+
+        if ($cmsBlock->isObjectNew()) {
+            return;
+        }
+
+        if (!$cmsBlock->dataHasChangedFor('title') &&
+            !$cmsBlock->dataHasChangedFor('identifier') &&
+            !$cmsBlock->dataHasChangedFor('content') &&
+            !$cmsBlock->dataHasChangedFor('is_active') &&
+            $this->_blockHasRevisions($cmsBlock->getId())
+        ) {
+            return;
+        }
+        $revision = Mage::getModel('meanbee_cmspagerevisions/cms_block_revisions');
+        $revision->setBlockId($cmsBlock->getId())
+            ->setTitle($cmsBlock->getTitle())
+            ->setIdentifier($cmsBlock->getIdentifier())
+            ->setContent($cmsBlock->getContent())
+            ->setCreationTime(Mage::getSingleton('core/date')->gmtDate())
+            ->setUpdateTime(Mage::getSingleton('core/date')->gmtDate())
+            ->setIsActive($cmsBlock->getIsActive())
+            ->setSortOrder($cmsBlock->getSortOrder())
+            ->save();
+    }
+
+    protected function _pageHasRevisions($pageId) {
         return Mage::getModel('meanbee_cmspagerevisions/cms_page_revisions')->getCollection()->addFieldToFilter('page_id', array('eq' => $pageId))->count();
+    }
+
+    protected function _blockHasRevisions($blockId) {
+        return Mage::getModel('meanbee_cmspagerevisions/cms_block_revisions')->getCollection()->addFieldToFilter('block_id', array('eq' => $blockId))->count();
     }
 }

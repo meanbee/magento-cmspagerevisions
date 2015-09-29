@@ -1,6 +1,6 @@
 <?php
 
-class Meanbee_CmsPageRevisions_Block_Adminhtml_Cms_Page_Edit_Tab_Grid_Renderer_Action extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Action
+class Meanbee_CmsPageRevisions_Block_Adminhtml_Cms_Block_Edit_Tab_Grid_Renderer_Action extends Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Action
 {
     public function render(Varien_Object $row)
     {
