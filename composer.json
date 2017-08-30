@@ -3,7 +3,7 @@
 	"description": "Maintain a history of CMS pages and static blocks in Magento 1 with this extension.",
 	"homepage": "https://www.meanbee.com/magento-extensions/cms-revisions.html",
 	"type": "magento-module",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"authors": [
         {
 		"name": "Meanbee",
